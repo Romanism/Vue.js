@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+export NODE_PATH=/home/ji/Desktop/vue/venv/lib/node_modules
+export NPM_CONFIG_PREFIX=/home/ji/Desktop/vue/venv
+export npm_config_prefix=/home/ji/Desktop/vue/venv
+exec /home/ji/Desktop/vue/venv/bin/node "$@"
