@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>VueJS Tutorials</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <!-- app.js에서 el:#vue-app에 선언되어 있습니다. : 해당 div태그 내에서 app.js의 인스턴스를 사용할 수 있습니다. (메소드 등)-->
+    <div id="vue-app">
+        <h1>Keyboard Events</h1>
+        <label>Name:</label>
+        <!-- Enter키를 활용해 폼에 입력 -->
+        <input type="text" v-on:keyup.enter="logName">
+        <label>Age:</label>
+        <input type="text" v-on:keyup.enter.alert="logAge">
+    </div>
+    <a v-on:click="move" href="https://kr.vuejs.org/v2/guide/events.html">해당 페이지로 이동</a>
+    <script src="app.js"></script>
+</body>
+
+</html>
