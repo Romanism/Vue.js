@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>VueJS Tutorials</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <!-- app.js에서 el:#vue-app에 선언되어 있습니다. : 해당 div태그 내에서 app.js의 인스턴스를 사용할 수 있습니다. (메소드 등)-->
+    <div id="vue-app">
+        <!-- bag image -->
+        <div id="bag" v-bind:class="{ burst: ended }"></div>
+
+
+        <!-- bag health -->
+        <div id="bag-health">
+            <div v-bind:style="{ width: health + '%' }"></div>
+        </div>
+
+
+        <!-- game controls -->
+        <div id="controls">
+            <button v-on:click="punch" v-show="!ended">Punch</button>
+            <button v-on:click="restart">Restart</button>
+        </div>
+
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
