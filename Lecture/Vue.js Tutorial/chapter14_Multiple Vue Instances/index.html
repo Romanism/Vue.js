@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>VueJS Tutorials</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+
+    <h1>Multiple Vue Instances</h1>
+
+    <!-- Multiple Vue Instances를 사용할때 단순히 js파일에서 두개의 Vue Instance를 생성해서 적용한다면 data나 computed는 다르게 적용되지만 methods는 적용되지 않습니다. -->
+    <div id="vue-app-one">
+        <h2>{{ title }}</h2>
+        <p>{{ greet }}</p>
+    </div>
+
+    <div id="vue-app-two">
+        <h2>{{ title }}</h2>
+        <p>{{ greet }}</p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

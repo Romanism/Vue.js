@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>VueJS Tutorials</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <!-- app.js에서 el:#vue-app에 선언되어 있습니다. : 해당 div태그 내에서 app.js의 인스턴스를 사용할 수 있습니다. (메소드 등)-->
+    <div id="vue-app">
+        <h1>Looping through lists</h1>
+
+        <!-- Loop문을 쓰기 위해 v-for문을 사용합니다. 특징은 데이터의 유형에 맞게 인덱스나 Key, Value에 접근할 수 있다는 것입니다.-->
+        <ul>
+            <li v-for="(character, index) in characters">
+                {{ index }}. {{ character }}
+            </li>
+            ----- 경계선 -----
+        </ul>
+
+        <ul>
+            <li v-for="(ninja, index) in ninjas">
+                {{ index }}. {{ ninja.name }} - {{ ninja.age }}
+            </li>
+            ----- 경계선 -----
+        </ul>
+
+        <template v-for="(ninja, index) in ninjas">
+            <h3>{{ index }}. {{ ninja.name }}</h3>
+            <p>age: {{ ninja.age }}</p>
+        </template> ----- 경계선 -----
+
+
+        <template v-for="ninja in ninjas">
+            <div v-for="(val, key) in ninja">
+                <p>{{ key }} - {{ val }}</p>
+            </div>
+        </template>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
