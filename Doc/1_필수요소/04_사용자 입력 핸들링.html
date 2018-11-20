@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>사용자 입력 핸들링</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <!-- v-on 디렉티브를 사용해 Vue 인스턴스에 메소드를 호출하는 이벤트 리스너를 첨부할 수 있습니다. ex) click -->
+    <div id="app-5">
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">메시지 뒤집기</button>
+    </div>
+
+    <!-- v-model 디렉티브를 사용해 양식에 대한 입력과 앱 상태를 양방향으로 바인딩 할 수 있습니다.-->
+    <div id="app-6">
+        <p>{{ message }}</p>
+        <input v-model="message">
+    </div>
+
+    <!-- script를 선언해 Javascript 코드 사용을 선언합니다.-->
+    <script type="text/javascript">
+        var app5 = new Vue({
+            el: '#app-5',
+            data: {
+                message: 'Hello World!!'
+            },
+            methods: {
+                // reverseMessage라는 메소드를 선언합니다.
+                reverseMessage: function() {
+                    this.message = this.message.split('').reverse().join('')
+                }
+            }
+        })
+
+        var app6 = new Vue({
+            el: '#app-6',
+            data: {
+                message: '안녕하세요 Vue!'
+            }
+        })
+    </script>
+</body>
+
+</html>

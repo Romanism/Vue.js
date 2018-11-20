@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<!-- 디렉티브(Directive)
+1. Vue에서 제공하는 특수 속성임을 나타내는 v- 접두어가 붙어 있습니다.
+2. 렌더링된 DOM에 특수한 반응형 동작을 합니다. -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>선언적 렌더링</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<!-- Vue.js의 핵심은 단순한 템플릿 구문을 사용해 선언적으로 DOM에 데이터를 렌더링하는 것입니다. -->
+
+<body>
+    <!-- v-bind를 통해서도 가져올 수 있습니다. -->
+    <div id="app-2">
+        <span v-bind: title="message">
+            이글에 마우스를 올리면 동적으로 바인딩 된 title을 볼 수 있어요!
+        </span>
+    </div>
+
+    <!-- script를 선언해 Javascript 코드 사용을 선언합니다.-->
+    <script type="text/javascript">
+        var app2 = new Vue({
+            el: '#app-2',
+            data: {
+                message: '이 페이지는 ' + new Date() + ' 에 로드 되었습니다'
+            }
+        })
+    </script>
+</body>
+
+</html>
