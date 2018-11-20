@@ -1,0 +1,79 @@
+<!--Vue Components : 화면에 비춰지는 뷰의 단위를 쪼개어 재활용이 가능한 형태로 관리하는 것을 의미합니다.-->
+
+<!DOCTYPE html>
+
+<head>
+  <title>Vue Sample</title>
+</head>
+
+<body>
+  <div id="app">
+    <button>Parent Component</button>
+    <!-- 여기에 my-component에 해당하는 값이 표시됨 -->
+    <my-component></my-component>
+    <my-local-component></my-local-component>
+  </div>
+
+  <div id="app2">
+    <my-component></my-component>
+    <!-- 해당 local component는 app에만 한정되어 있기 때문에 app2에선 실행되지 않습니다. -->
+    <my-local-component></my-local-component>
+  </div>
+
+  <script src="https://unpkg.com/vue@2.3.3"></script>
+  <script>
+    // Global Component - Vue.component('태그값', 해당 component 내용)
+    Vue.component('my-component', {
+      template: "<div>A Global component!</div>"
+    });
+
+    // Local Component
+    var cmp = {
+      template: "<div>A Local component!</div>"
+    };
+
+    new Vue({
+      el: '#app',
+      components: {
+        // 태그명 : 컴포넌트의 내용
+        // 해당 컴포넌트는 태그가 app인 곳에만 사용할 수 있습니다.
+        'my-local-component': cmp
+      }
+    })
+
+    new Vue({
+      el: '#app2'
+    })
+
+
+  </script>
+
+</body>
+
+</html>
+
+<!--
+Global or Local Component : 컴포넌트를 뷰 인스턴스에 등록해서 사용할 때 다음과 같이 Global하게 등록할 수 있습니다.
+
+1. Global Component
+Vue.component('my-component'), {
+  //...
+})
+
+2. Local Component : 해당 Vue 인스턴스에서만 활용할 수 있는 로컬(지역) 컴포넌트를 의미합니다.
+var cmp = {
+  data: function(){
+  return{
+    //...
+    };
+  }
+  template: '<hr>',
+  methods: {}
+}
+
+new Vue({
+  components: {
+    'my-cmp' : cmp
+  }
+})
+-->

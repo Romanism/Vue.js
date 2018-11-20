@@ -1,0 +1,59 @@
+<!--
+Nested Routers
+- 라우터로 화면 이동 시 Nested Routers를 이용해 여러 개의 컴포넌트를 동시에 렌더링 할 수 있습니다.
+- 렌더링 되는 컴포넌트의 구조는 가장 큰 상위 컴포넌트가 하위의 컴포넌트를 포함하는 Parent-Child 형태와 같습니다.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Nested Router Sample</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Hello Vue Nested Router!</h1>
+      <p>
+        <router-link to="/login">Go to Login</router-link>
+        <router-link to="/list">Go to List</router-link>
+      </p>
+      <router-view></router-view>
+    </div>
+
+    <script src="js/vendor/vue.js"></script>
+    <script src="js/vendor/vue-router.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
+
+
+<!--
+주의사항 - Vue Template Root Element
+- Vue의 Template에는 최상위 태그가 1개만 있어야 렌더가 가능합니다.
+var Foo = {
+  template:'
+    <div>foo</div>
+    <router-view></router-view>
+  ' // 에러발생 (최상위 태그가 2개 발생)
+}
+-->
+
+<!--
+Named Views
+- 라우터로 특정 URL로 이동시, 해당 URL에 대항하는 여러 개의 View(컴포넌트)를 동시에 렌더링합니다.
+각 컴포넌트에 해당하는 name 속성과 router-view 지정이 필요합니다.
+<div id="app">
+  <router-view name="nestedHeader"></router-view>
+  <router-view></router-view>
+</div>
+
+{
+  path : '/home',
+  // Named Router
+  components: {
+    nestedHeader: AppHeader,
+    default: Body
+  }
+
+},
+-->

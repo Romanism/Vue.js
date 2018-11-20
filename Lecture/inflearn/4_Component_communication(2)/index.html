@@ -1,0 +1,26 @@
+<!--
+같은 레벨의 컴포넌트 간 통신
+
+만약에 2개의 하위 컴포넌트가 똑같은 상위 컴포넌트를 가졌다고 가정하겠습니다.
+이 2개의 하위 컴포넌트는 서로가 직접적으로 통신할 수 없고 항상 상위 컴포넌트를 거쳐야 합니다.
+
+
+Event Bus - 컴포넌트 간 통신
+부모 지삭이 아닌 n-n 컴포넌트 간의 통신을 위해 Event Bus를 활용할 수 있습니다.
+Event Bus를 사용하는 이유는 만약 컴포넌트가 너무 많으면 해당 컴포넌트간 데이터를 주고 받을 시 많은 과정 (부모가 상위개념이 있다면)을 거쳐야 하기 때문입니다.
+
+
+이벤트 발생 : 이벤트를 발생시킬 컴포넌트에 eventBus import 후 $emit으로 이벤트를 발생시킵니다.
+import {eventBus} from '../../main';
+eventBus.$emit('refresh', 10); //refresh라는 이벤트를 발생, 값은 10
+
+
+이벤트 수신 : 해당 이벤트를 받을 컴포넌트에도 동일하게 import 후 콜백으로 이벤트 수신
+import {eventBus} from '../../main';
+// 등록 위치는 해당 컴포넌트의 created 메서드에 등록
+created(){
+  eventBus.$on('refresh', function(data) {
+    console.log(data); //data = 10
+  });
+}
+-->

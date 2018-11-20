@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vue Sample</title>
+  </head>
+  <body>
+    <div id="app">
+      {{ message }}
+    </div>
+
+    <script src="https://unpkg.com/vue@2.4.4/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello Vue.js!'
+        }
+      })
+    </script>
+  </body>
+</html>
+
+<!--
+Vue 는 무엇인가?
+1. 정의
+MVVM 패턴의 ViewModel 레이어에 해당하는 View단 라이브러리
+
+View : 화면
+DOM : 화면의 요소 (버튼, 리스트, 탭 등)
+View에서 변경이 되었을 때 ViewModel의 DOM Listeners를 거쳐 모델에 신호가 갑니다.
+모델은 변화된 데이터에 대해 ViewModel의 Data Bindings를 거쳐 다시 View로 가면서 화면이 리엑티브하게 변경됩니다.
+
+2. 특징
+- 데이터 바인딩과 화면 단위를 컴포넌트 형태로 제공하며, 관련 API를 지원하는데 궁극적인 목적이 있습니다.
+- Angular에서 지원하는 2 Way Data Bindings를 동일하게 제공합니다.
+- 하지만 Component간 통신의 기본 골격은 React의 1 Way Data Flow (부모 -> 자식)와 유사합니다.
+- 다른 Front-End FrameWork (Angular, React)와 비교했을 때 훨씬 가볍고 빠릅니다.
+- 간단한 Vue를 적용하는데 있어서도 러닝커브가 낮고, 쉽게 접근이 가능합니다.
+
+
+[실습] Vue 시작하기 - Hello Vue.js
+Vue 시작하기
+다른 주요 Front-End FrameWork(Angular, React)보다 Vue가 가지는 가장 큰 강점은 바로 시작하기가 정말 쉽다는 점입니다.
+
+
+[부록] MVVM 패턴이란?
+위키에 명시된 것처럼, Backend 로직과 Client의 마크업 & 데이터 표현단을 분리하기 위한 구조로 전통적인 MVC 패턴의 방식에서 기인하였습니다.
+간단하게 생각해서 화면 앞단의 화면 동작 관련 로직과 뒷단의 DB 데이터 처리 및 서버 로직을 분리하고,
+뒷단에서 넘어온 데이터를 Model에 담아 View로 넘겨주는 중간지점이라고 보면 되겠습니다.
+View <-> ViewModel <-> Model
+​-->

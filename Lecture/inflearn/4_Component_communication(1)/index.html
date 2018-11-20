@@ -1,0 +1,31 @@
+<!--
+Vue 컴포넌트 통신
+
+부모와 자식 컴포넌트 관계
+구조상 상-하 관계에 있는 컴포넌트 통신은
+- 부모 -> 자식 : props down
+- 자식 -> 부모 : events up
+
+
+Props : 상위(부모)에서 하위(자식)으로 값을 전달할 때 사용되는 속성을 의미합니다.
+- 모든 컴포넌트는 각 컴포넌트 자체의 스코프를 갖습니다. ex) 하위 컴포넌트가 상위 컴포넌트의 값을 바로 참조할 수 없는 형식
+
+컴포넌트를 작성
+Vue.component('child-component', {
+  props: ['passedData'],
+  template: '<p>{{passedData}}</p>'
+})
+
+var app = new Vue({
+  el: '#app',
+  data: {
+  message: 'Hello Vue! from Parent Component',
+  }
+});
+
+<div id = 'app'>
+  <child-component v-bind:passed-data="message"></child-component>
+</div>
+
+주의 할점 : js에서 props 변수 명명을 카멜 기법(소-대-대...)으로 하면 html에서 접근은 케밥 기법(-)으로 가야 한다.
+-->
