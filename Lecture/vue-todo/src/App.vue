@@ -20,21 +20,21 @@ import TodoFooter from "./components/TodoFooter.vue";
 export default {
   name: "app",
 
-  data: function() {
+  data() {
     return {
       todoItems: []
     };
   },
 
   methods: {
-    addOneItem: function(todoItem) {
+    addOneItem(todoItem) {
       // 추가2. v-on:addTodoItem으로 이벤트를 받고 같이 받은 아이템을 뿌려준다
-      var obj = { completed: false, item: todoItem };
+      const obj = { completed: false, item: todoItem };
       localStorage.setItem(todoItem, JSON.stringify(obj));
       this.todoItems.push(obj);
     },
 
-    removeOneItem: function(todoItem, index) {
+    removeOneItem(todoItem, index) {
       // 1. Browser에서 삭제
       this.todoItems.splice(index, 1);
 
@@ -42,7 +42,7 @@ export default {
       localStorage.removeItem(todoItem.item);
     },
 
-    toggleOneItem: function(todoItem, index) {
+    toggleOneItem(todoItem, index) {
       // 1. Brawer에서 Class명을 추가/제거해서 완료 표시 진행
       this.todoItems[index].completed = !this.todoItems[index].completed;
 
@@ -51,15 +51,15 @@ export default {
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
     },
 
-    clearAllItems: function() {
+    clearAllItems() {
       localStorage.clear();
       this.todoItems = [];
     }
   },
 
-  created: function() {
+  created() {
     if (localStorage.length > 0) {
-      for (var i = 0; i < localStorage.length; i++) {
+      for (let i = 0; i < localStorage.length; i++) {
         if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
           this.todoItems.push(
             JSON.parse(localStorage.getItem(localStorage.key(i)))

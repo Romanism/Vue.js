@@ -23,14 +23,15 @@ export default {
     Modal
   },
 
-  data: function() {
+  data() {
     return {
       newTodoItem: "",
       showModal: false
     };
   },
+
   methods: {
-    addTodo: function() {
+    addTodo() {
       if (this.newTodoItem !== "") {
         // 추가1. $emit: 상위 컴포넌트로 이벤트를 발생시킴 (addTodoItem이라는 이름으로 this.newTodoItem을 같이 보냄)
         this.$emit("addTodoItem", this.newTodoItem);
@@ -39,11 +40,11 @@ export default {
         this.showModal = true;
       }
     },
-    clearInput: function() {
+    clearInput() {
       // 초기화
       this.newTodoItem = "";
     },
-    closeModal: function() {
+    closeModal() {
       this.showModal = false;
     }
   }
