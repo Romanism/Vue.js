@@ -2,14 +2,14 @@
   <div>
     <transition-group name="list" tag="ul">
       <!-- <ul> -->
-      <li v-for="(todoItem, index) in propsdata" :key="index" class="shadow">
+      <li v-for="(todoItem, index) in this.$store.state.todoItems" :key="index" class="shadow">
         <i
           class="checkBtn fas fa-check"
           v-bind:class="{checkCompleted: todoItem.completed}"
           v-on:click="toggleComplete(todoItem, index)"
         ></i>
         <span v-bind:class="{textCompleted: todoItem.completed}">{{todoItem.item}}</span>
-        <span class="removeBtn" v-on:click="removeTodo(todoItem, index)">
+        <span class="removeBtn" v-on:click="removeItem(todoItem, index)">
           <i class="fas fa-trash-alt"></i>
         </span>
       </li>
@@ -20,13 +20,13 @@
 
 <script>
 export default {
-  props: ["propsdata"],
   methods: {
-    removeTodo(todoItem, index) {
-      this.$emit("removeItem", todoItem, index);
+    removeItem(todoItem, index) {
+      // store에서 한번에 받기 위해 객체화 시킴
+      this.$store.commit("removeOneItem", { todoItem, index });
     },
     toggleComplete(todoItem, index) {
-      this.$emit("toggleItem", todoItem, index);
+      this.$store.commit("toggleOneItem", { todoItem, index });
     }
   }
 };

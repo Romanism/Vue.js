@@ -34,7 +34,8 @@ export default {
     addTodo() {
       if (this.newTodoItem !== "") {
         // 추가1. $emit: 상위 컴포넌트로 이벤트를 발생시킴 (addTodoItem이라는 이름으로 this.newTodoItem을 같이 보냄)
-        this.$emit("addTodoItem", this.newTodoItem);
+        const text = this.newTodoItem.trim();
+        this.$store.commit("addOneItem", text);
         this.clearInput();
       } else {
         this.showModal = true;
