@@ -2,14 +2,14 @@
   <div>
     <transition-group name="list" tag="ul">
       <!-- <ul> -->
-      <li v-for="(todoItem, index) in this.$store.state.todoItems" :key="index" class="shadow">
+      <li v-for="(todoItem, index) in this.storedTodoItems" :key="index" class="shadow">
         <i
           class="checkBtn fas fa-check"
           v-bind:class="{checkCompleted: todoItem.completed}"
-          v-on:click="toggleComplete(todoItem, index)"
+          v-on:click="toggleComplete({todoItem, index})"
         ></i>
         <span v-bind:class="{textCompleted: todoItem.completed}">{{todoItem.item}}</span>
-        <span class="removeBtn" v-on:click="removeItem(todoItem, index)">
+        <span class="removeBtn" v-on:click="removeTodo({todoItem, index})">
           <i class="fas fa-trash-alt"></i>
         </span>
       </li>
@@ -19,15 +19,20 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
+
 export default {
   methods: {
-    removeItem(todoItem, index) {
-      // store에서 한번에 받기 위해 객체화 시킴
-      this.$store.commit("removeOneItem", { todoItem, index });
-    },
-    toggleComplete(todoItem, index) {
-      this.$store.commit("toggleOneItem", { todoItem, index });
-    }
+    ...mapMutations({
+      // 암묵적으로 payload를 싣지 않아도 자동으로 싣어짐
+      removeTodo: "removeOneItem",
+      toggleComplete: "toggleOneItem"
+    })
+  },
+
+  computed: {
+    // ...mapState(["todoItems"])
+    ...mapGetters(["storedTodoItems"])
   }
 };
 </script>
